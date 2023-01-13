@@ -1,0 +1,44 @@
+version: "3.9"
+volumes:
+  db-store:
+services:
+  app:
+    container_name: "${PROJECT_NAME}-app"
+    build:
+      context: app
+    restart: always
+    environment:
+      - ASPNETCORE_URLS=http://+:8000
+  web:
+    container_name: "${PROJECT_NAME}-web"
+    restart: unless-stopped
+    build: web
+    ports:
+      - target: 80
+        published: ${WEB_PORT:-80}
+        protocol: tcp
+        mode: host
+    depends_on:
+      - app
+
+  db:
+    container_name: "${PROJECT_NAME}-db"
+    build:
+      context: .
+      dockerfile: ./mysql8/Dockerfile
+    ports:
+      - target: 3306
+        published: ${DB_PORT:-3306}
+        protocol: tcp
+        mode: host
+    volumes:
+      - type: volume
+        source: db-store
+        target: /var/lib/mysql
+        volume:
+          nocopy: true
+    environment:
+      - MYSQL_DATABASE=${DB_NAME:-develop}
+      - MYSQL_USER=${DB_USER:-develop}
+      - MYSQL_PASSWORD=${DB_PASS:-secret}
+      - MYSQL_ROOT_PASSWORD=${DB_PASS:-secret}
