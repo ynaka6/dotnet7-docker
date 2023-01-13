@@ -25,6 +25,8 @@ Project structure:
 │   │   └── default.conf
 │   ├── Dockerfile
 │   └── nginx.conf
+├── .env.example
+├── docker-compose.yaml
 └── README.md
 ```
 
