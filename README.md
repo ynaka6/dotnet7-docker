@@ -46,3 +46,6 @@ Stop and remove the containers
 ```
 $ docker compose down
 ```
+
+## References
+https://github.com/docker/awesome-compose/tree/master/nginx-aspnet-mysql
