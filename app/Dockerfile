@@ -2,7 +2,7 @@
 
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:7.0-alpine AS base
 
-WORKDIR /src
+WORKDIR /app
 
 COPY aspnetapp.csproj ./
 RUN ["dotnet", "restore"]
