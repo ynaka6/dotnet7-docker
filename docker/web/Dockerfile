@@ -4,5 +4,5 @@ RUN apk update && apk upgrade
 RUN apk add --no-cache wget vim bash \
   && rm -rf /var/cache/apk/*
 
-COPY conf.d/* /etc/nginx/conf.d/
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY ./docker/web/conf.d/* /etc/nginx/conf.d/
+COPY ./docker/web/nginx.conf /etc/nginf
