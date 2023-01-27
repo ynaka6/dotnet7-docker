@@ -1,6 +1,6 @@
 up:
 	mkdir -p ./src
-	docker-compose up -d
+	docker-compose up -d --build
 
 stop:
 	docker-compose stop
@@ -9,7 +9,7 @@ down:
 	docker-compose down
 
 ash/app:
-	docker exec -it dotnet7-docker-app ash
+	docker exec -it dotnet7-docker-app ash -l
 
 
 dotnet/init/webapi:
