@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.4
 
-FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:7.0-alpine
+FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:7.0.100-alpine3.16
 WORKDIR /app
 
 ## TODO: should check version
