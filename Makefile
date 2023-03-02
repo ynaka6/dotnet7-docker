@@ -8,6 +8,9 @@ stop:
 down:
 	docker-compose down
 
+ps:
+	docker-compose ps
+
 ash/app:
 	docker exec -it dotnet7-docker-app ash -l
 
