@@ -50,3 +50,8 @@ services:
       - MYSQL_USER=${DB_USER:-develop}
       - MYSQL_PASSWORD=${DB_PASS:-secret}
       - MYSQL_ROOT_PASSWORD=${DB_PASS:-secret}
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - ${MAILHOG_PORT:-8025}:8025
