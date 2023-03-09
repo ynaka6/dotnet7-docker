@@ -30,6 +30,7 @@ services:
       - app
 
   db:
+    platform: linux/amd64
     container_name: "${PROJECT_NAME}-db"
     build:
       context: .
