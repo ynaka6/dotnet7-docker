@@ -52,6 +52,7 @@ services:
       - MYSQL_ROOT_PASSWORD=${DB_PASS:-secret}
 
   mailhog:
+    platform: linux/amd64
     image: mailhog/mailhog
     ports:
       - ${MAILHOG_PORT:-8025}:8025
