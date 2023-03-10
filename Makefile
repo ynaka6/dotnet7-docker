@@ -1,5 +1,5 @@
 up:
-	mkdir -p ./src
+	mkdir -p ./app/src
 	docker-compose up -d --build
 
 stop:
@@ -16,15 +16,15 @@ ash/app:
 
 
 dotnet/init/webapi:
-	docker exec -it dotnet7-docker-app dotnet new webapi -f net7.0
-	docker exec -it dotnet7-docker-app sed -i "s/\"\*\"/\"\*\",\r\n  \"Urls\": \"http\:\/\/\+\:8000\"/g" appsettings.json 
+	docker exec -it dotnet7-docker-app dotnet new webapi -f net7.0 -o ./src
+	docker exec -it dotnet7-docker-app sed -i "s/\"\*\"/\"\*\",\r\n  \"Urls\": \"http\:\/\/\+\:8000\"/g" ./src/appsettings.json 
 
 dotnet:
 	docker exec -it dotnet7-docker-app dotnet 
 
 dotnet/run:
-	docker exec -it dotnet7-docker-app dotnet run
+	docker exec -it dotnet7-docker-app dotnet run --project ./src
 
 dotnet/watch:
-	docker exec -it dotnet7-docker-app dotnet watch
+	docker exec -it dotnet7-docker-app dotnet watch --project ./src
 
